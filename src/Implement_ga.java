@@ -4,10 +4,7 @@
  */
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.text.html.parser.Entity;
 /**
  *
  * @author Archie
@@ -87,10 +84,7 @@ public class Implement_ga implements Interface_ga{
     
     @Override
     public boolean cek(String procedure) {
-        
-        
             boolean stat = false;
-            StringBuffer result = new StringBuffer();
             try{
                 PreparedStatement sta = con.prepareStatement(procedure);
                 ResultSet rs = sta.executeQuery();
@@ -101,9 +95,6 @@ public class Implement_ga implements Interface_ga{
                     }else{
                         stat = false;
                     }
-                
-                
-                
         }catch(Exception exc){
             exc.printStackTrace();
         }
@@ -113,10 +104,7 @@ public class Implement_ga implements Interface_ga{
     
     @Override
     public int cek_data(String procedure) {
-        
-        
             int stat = 0;
-            StringBuffer result = new StringBuffer();
             try{
                 PreparedStatement sta = con.prepareStatement(procedure);
                 ResultSet rs = sta.executeQuery();

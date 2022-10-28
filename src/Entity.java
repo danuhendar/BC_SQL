@@ -22,6 +22,15 @@ public class Entity {
     String cabang;
     String topic;
     String tampilkan_query_console;
+    String batas_menit;
+    
+    public String getBatasMenit() {
+		return batas_menit;
+	}
+
+	public void setBatasMenit(String batas_menit) {
+		this.batas_menit = batas_menit;
+	}
     
     public String getTampilkan_query_console() {
 		return tampilkan_query_console;

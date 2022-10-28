@@ -22,6 +22,7 @@ public class Global_variable {
     String flag_read_initial;
     Boolean res_flag_read_initial;
     String writelog;
+    String batas_menit;
     
     
     String Parser_TASK,
@@ -44,6 +45,16 @@ public class Global_variable {
     Parser_LOCAL_PATH,
     Parser_SUB_ID; 
 
+    
+    public String getBatasMenit() {
+        return batas_menit;
+    }
+
+    public void setBatasMenit(String batas_menit) {
+        this.batas_menit = batas_menit;
+    }
+
+    
     public String getMaxvmusepercent() {
         return maxvmusepercent;
     }
@@ -59,6 +70,8 @@ public class Global_variable {
     public void setCleansession(String cleansession) {
         this.cleansession = cleansession;
     }
+    
+    
 
     public String getKeepalive() {
         return keepalive;

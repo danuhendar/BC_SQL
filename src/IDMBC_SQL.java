@@ -1,29 +1,13 @@
-import java.io.FileInputStream;
-import java.sql.Connection;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Properties;
-import java.util.UUID;
-
-import org.bson.Document;
 import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
 import org.eclipse.paho.client.mqttv3.MqttClient;
-import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class IDMBC_SQL {
 	MqttClient client_transreport;
-	Global_function gf = new Global_function();
-	Global_variable gv = new Global_variable();
-	Interface_ga inter_login;
-	Connection con;
-	SQLConnection sqlcon = new SQLConnection();
+	Global_function gf = new Global_function(true);	
 	int counter = 1;
 	String kode_cabang;
 	public IDMBC_SQL(String kode_cabang) {
@@ -207,19 +191,21 @@ public class IDMBC_SQL {
 									Parser_TANGGAL_JAM, Parser_VERSI, Parser_HASIL, Parser_TO, Parser_FROM, Parser_SN_HDD,
 									Parser_IP_ADDRESS, Parser_STATION, Parser_CABANG, Parser_NAMA_FILE, Parser_CHAT_MESSAGE,
 									Parser_REMOTE_PATH, Parser_LOCAL_PATH, Parser_SUB_ID, res_show_insert, "INSERT", "transreport");
-							System.out.println("=============================================================");
+							String tanggal_jam = gf.get_tanggal_curdate_curtime();
+							gf.WriteFile("timemessage.txt", "", tanggal_jam, false);
+							//System.out.println("=============================================================");
 						}else{
 							gf.PrintMessage2("SEND > BC_SQL/"+kode_cabang+"/", counter, msg_type, topic, Parser_TASK, Parser_FROM,
 									Parser_TO, null, HariSekarang_run);
-							gf.InsTransReport(Parser_TASK, Parser_ID, Parser_SOURCE, Parser_COMMAND, Parser_OTP,
-									Parser_TANGGAL_JAM, Parser_VERSI, Parser_HASIL, Parser_TO, Parser_FROM, Parser_SN_HDD,
-									Parser_IP_ADDRESS, Parser_STATION, Parser_CABANG, Parser_NAMA_FILE, Parser_CHAT_MESSAGE,
-									Parser_REMOTE_PATH, Parser_LOCAL_PATH, Parser_SUB_ID, res_show_insert, "INSERT", "transreport");
-							System.out.println("=============================================================");
+//							gf.InsTransReport(Parser_TASK, Parser_ID, Parser_SOURCE, Parser_COMMAND, Parser_OTP,
+//									Parser_TANGGAL_JAM, Parser_VERSI, Parser_HASIL, Parser_TO, Parser_FROM, Parser_SN_HDD,
+//									Parser_IP_ADDRESS, Parser_STATION, Parser_CABANG, Parser_NAMA_FILE, Parser_CHAT_MESSAGE,
+//									Parser_REMOTE_PATH, Parser_LOCAL_PATH, Parser_SUB_ID, res_show_insert, "INSERT", "transreport");
+							//System.out.println("=============================================================");
 						}
 						
-						System.gc();
-			            System.runFinalization();
+						//System.gc();
+			            //System.runFinalization();
 						
 					}
 				

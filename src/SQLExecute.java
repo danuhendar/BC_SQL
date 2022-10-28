@@ -9,7 +9,7 @@ public class SQLExecute {
 	public String SqlGet(String procedure) {
 		String res = "";
 		try {
-			JSONObject obj_data = new JSONObject();
+			 
 			Connection conn = DriverManager.getConnection("jdbc:mysql://172.24.16.131:6446/idmcmd?characterEncoding=latin1&" +
 	                "user=root&password=edpho@Idm2020");
 
