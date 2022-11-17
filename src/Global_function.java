@@ -389,8 +389,7 @@ public class Global_function {
     long previousJvmProcessCpuTime = 0;
     long previousJvmUptime = 0;
     String write_log;
-    boolean res_write_log = false;
-    Global_variable gv = new Global_variable();
+    boolean res_write_log = false; 
   
    String Parser_TASK,
     Parser_ID,
@@ -429,7 +428,7 @@ public class Global_function {
             Parser_ID = obj.get("ID").toString();
             //gv.setParser_TASK(obj.get("ID").toString());
         }catch(Exception exc){
-             gv.setParser_TASK("");
+             
         }
 
         Parser_SOURCE = obj.get("SOURCE").toString();
@@ -803,9 +802,6 @@ public class Global_function {
             }
            
             if(NAMA_TABLE == "transreport"){
-                  
-            	
-                 
                   query = INS_OR_REPLACE+" INTO "+nama_table_create+" VALUES('"+res_in_kdcab+"',"
                                                     + "'"+IN_TASK.toUpperCase()+"',"
                                                     + "'"+IN_ID+"',"
@@ -854,6 +850,15 @@ public class Global_function {
                                                     + "NOW(),"
                                                     + "'"+IN_VERSI+"',"
                                                     + "NOW());";
+            }else if(NAMA_TABLE == "transaksi_posrealtime_nok"){
+            	 query = INS_OR_REPLACE+" INTO "+NAMA_TABLE+" VALUES('"+IN_CABANG+"',"
+                         + "'"+kdtk+"',"
+                         + "'"+nm_pc+"',"
+                         + "'"+IN_IP_ADDRESS+"',"
+                         + "JSON_EXTRACT_RESULT('"+IN_HASIL+"'),"
+                         + "'"+IN_VERSI+"',"
+                         + "NOW(),"
+                         + "'"+IN_SOURCE+"');";
             }
            
             if(command_output == true){
@@ -1865,5 +1870,8 @@ public class Global_function {
             e.printStackTrace();
         }
     }
+    
+    
+   
     
 }

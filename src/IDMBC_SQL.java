@@ -183,8 +183,13 @@ public class IDMBC_SQL {
 						UnpackJSON(message_ADT_Decompress);
 						//System.out.println(message_ADT_Decompress);
 						
+						//System.out.println("Parser_TO : "+Parser_TO);
+						//System.out.println("Parser_SOURCE : "+Parser_SOURCE);
+						boolean is_monitoring_Pos_Realtime = Parser_TO.contains("MonitoringPosRealtime");
+						//System.out.println("is_monitoring_Pos_Realtime : "+is_monitoring_Pos_Realtime);
 						
-						if(Parser_SOURCE.equals("IDMCommandListeners")){
+						System.out.println("===================================================");
+						if(Parser_SOURCE.equals("IDMCommandListeners") && is_monitoring_Pos_Realtime == false  ){
 							gf.PrintMessage2("RECV > BC_SQL/"+kode_cabang+"/", counter, msg_type, topic, Parser_TASK, Parser_FROM,
 									Parser_TO, null, HariSekarang_run);
 							gf.InsTransReport(Parser_TASK, Parser_ID, Parser_SOURCE, Parser_COMMAND, Parser_OTP,
@@ -194,6 +199,16 @@ public class IDMBC_SQL {
 							String tanggal_jam = gf.get_tanggal_curdate_curtime();
 							gf.WriteFile("timemessage.txt", "", tanggal_jam, false);
 							//System.out.println("=============================================================");
+						}else if(Parser_SOURCE.equals("IDMCommandListeners") && is_monitoring_Pos_Realtime == true) {
+							
+							gf.PrintMessage2("RECV > BC_MONITORING_POSREALTIME/"+kode_cabang+"/", counter, msg_type, topic, Parser_TASK, Parser_FROM,
+									Parser_TO, null, HariSekarang_run);
+							gf.InsTransReport(Parser_TASK, Parser_ID, Parser_SOURCE, Parser_COMMAND, Parser_OTP,
+									Parser_TANGGAL_JAM, Parser_VERSI, Parser_HASIL, Parser_TO, Parser_FROM, Parser_SN_HDD,
+									Parser_IP_ADDRESS, Parser_STATION, Parser_CABANG, Parser_NAMA_FILE, Parser_CHAT_MESSAGE,
+									Parser_REMOTE_PATH, Parser_LOCAL_PATH, Parser_SUB_ID, res_show_insert, "REPLACE", "transaksi_posrealtime_nok");
+							String tanggal_jam = gf.get_tanggal_curdate_curtime();
+							gf.WriteFile("timemessage.txt", "", tanggal_jam, false);
 						}else{
 							gf.PrintMessage2("SEND > BC_SQL/"+kode_cabang+"/", counter, msg_type, topic, Parser_TASK, Parser_FROM,
 									Parser_TO, null, HariSekarang_run);
