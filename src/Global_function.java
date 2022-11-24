@@ -855,10 +855,10 @@ public class Global_function {
                          + "'"+kdtk+"',"
                          + "'"+nm_pc+"',"
                          + "'"+IN_IP_ADDRESS+"',"
-                         + "JSON_EXTRACT_RESULT('"+IN_HASIL+"'),"
+                         + "JSON_EXTRACT_RESULT('"+IN_HASIL.replace("'", "\\'")+"'),"
                          + "'"+IN_VERSI+"',"
                          + "NOW(),"
-                         + "'"+IN_SOURCE+"');";
+                         + "'"+IN_SUB_ID+"');";
             }
            
             if(command_output == true){
