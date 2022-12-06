@@ -850,7 +850,7 @@ public class Global_function {
                                                     + "NOW(),"
                                                     + "'"+IN_VERSI+"',"
                                                     + "NOW());";
-            }else if(NAMA_TABLE == "transaksi_posrealtime_nok"){
+            }else{
             	 query = INS_OR_REPLACE+" INTO "+NAMA_TABLE+" VALUES('"+IN_CABANG+"',"
                          + "'"+kdtk+"',"
                          + "'"+nm_pc+"',"
