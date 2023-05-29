@@ -790,16 +790,7 @@ public class Global_function {
             
             String tahun_bulan_tanggal = get_tanggal_curdate().replaceAll("-", "");
             String nama_table_create = NAMA_TABLE+""+tahun_bulan_tanggal;
-            //System.out.println("SELECT EXISTS(SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_NAME = '"+nama_table_create+"') AS CEK;");
-            boolean cek_table = inter_login.cek("SELECT EXISTS(SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_NAME = '"+nama_table_create+"') AS CEK;");
-            if(cek_table == false){
-          	  String sql_create = "SELECT EXISTS(SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_NAME = '"+nama_table_create+"') AS CEK;";
-          	  boolean create_table = create_table_mysql(nama_table_create);
-          	  inter_login.call_upd_fetch(sql_create, false);
-                //System.out.println("SUKSES CREATE TABLE TRANSREPORT");
-            }else{
-                
-            }
+            
            
             if(NAMA_TABLE == "transreport"){
                   query = INS_OR_REPLACE+" INTO "+nama_table_create+" VALUES('"+res_in_kdcab+"',"
@@ -817,10 +808,10 @@ public class Global_function {
                                                     + "'"+IN_SN_HDD+"',"
                                                     + "'"+IN_COMMAND.replace("\\", "/").replace("'", "")+"',"
                                                     + "CONCAT('"+IN_HASIL.replace("'", "").replace("\\", "/")+"'),"
-                                                    + "'"+IN_CHAT_MESSAGE.replace("", "-")+"',"
-                                                    + "'"+IN_NAMA_FILE.replace("", "-")+"',"
-                                                    + "'"+IN_REMOTE_PATH.replace("", "-")+"',"
-                                                    + "'"+IN_LOCAL_PATH.replace("", "-")+"',"
+                                                    + "'"+IN_CHAT_MESSAGE+"',"
+                                                    + "'"+IN_NAMA_FILE+"',"
+                                                    + "'"+IN_REMOTE_PATH+"',"
+                                                    + "'"+IN_LOCAL_PATH+"',"
                                                     + "NOW(),"
                                                     + "'"+IN_VERSI+"',"
                                                     + "NULL,"
