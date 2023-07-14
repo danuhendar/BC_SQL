@@ -1,3 +1,4 @@
+package Dao;
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -156,6 +157,17 @@ public class Implement_ga implements Interface_ga{
                 
        return result.toString();
     }
+
+    public boolean cek_koneksi_db() {
+		// TODO Auto-generated method stub
+		Boolean res = true;
+		try {
+			res = con.isClosed();
+		}catch(Exception exc) {
+			exc.printStackTrace();
+		}
+		return res;
+	}
 
 
 

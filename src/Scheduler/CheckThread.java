@@ -1,3 +1,6 @@
+package Scheduler;
+
+import Controller.CheckActivity;
 
 public class CheckThread extends Thread {
 	CheckActivity act;
